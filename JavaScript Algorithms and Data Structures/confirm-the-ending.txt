@@ -1,0 +1,9 @@
+function confirmEnding(str, target) {
+  let strLength = str.length
+  let end = str.substring(strLength-target.length, )
+  if (end == target) {
+    return true
+  } return false;
+}
+
+confirmEnding("Bastian", "n");
