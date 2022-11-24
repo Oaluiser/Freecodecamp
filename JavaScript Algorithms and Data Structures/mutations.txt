@@ -1,0 +1,25 @@
+function mutation(arr) {
+  let lowerCase1 = arr[0].toLowerCase();
+  let lowerCase2 = arr[1].toLowerCase();
+  let split1 = lowerCase1.split("");
+  let split2 = lowerCase2.split("");
+  let check = split2;
+  let result = true;
+  for (let i = 0; i < arr[1].length; i++) {
+    for (let j = 0; j < arr[0].length; j++) {
+      if (split1[j] === split2[i]) {
+        check[i] = true
+      } 
+    }
+  } 
+  for (let k = 0; k < check.length; k++) {
+    if (check[k] != true) {
+      check[k] = false;
+      result = false;
+    }
+  }
+  console.log(result)
+  return result;
+}
+
+mutation(["hello", "Hello"]);
