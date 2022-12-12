@@ -1,0 +1,15 @@
+function pairElement(str) {
+  let result = [];
+  let pairs = [["A", "T"], ["T", "A"], ["G", "C"], ["C", "G"]];
+  for (let i = 0; i < str.length; i++) {
+    for (let j = 0; j < pairs.length; j++){
+      if (str[i] === pairs[j][0]) {
+        result.push(pairs[j]);
+      }
+    }
+  }
+
+  return result;
+}
+
+console.log(pairElement("GCG"));

@@ -1,0 +1,12 @@
+function spinalCase(str) {
+  let splitString = str.split(/(?=[A-Z_])|\W/)
+  let filteredString = splitString.filter(string => string !== "_")
+  let joinString = filteredString.join("-");
+  console.log(splitString)
+  return joinString
+    .replace(/\s/g, "")
+    .toLowerCase();
+  
+}
+
+console.log(spinalCase("Teletubbies say Eh-oh"));

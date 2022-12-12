@@ -1,0 +1,16 @@
+function fearNotLetter(str) {
+  let array = str.split("")
+  let arrayLength = array.length;
+  let fullAlphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
+  let firstIndex = fullAlphabetArray.indexOf(array[0]);
+  let comparisonArray = fullAlphabetArray.slice(firstIndex, firstIndex + arrayLength + 1);
+  console.log(array);
+  for (let i = 0; i < comparisonArray.length; i++) {
+    if (comparisonArray[i] !== array[i]) {
+      return comparisonArray[i];
+    }
+  }
+  return undefined;
+}
+
+console.log(fearNotLetter("abce"));

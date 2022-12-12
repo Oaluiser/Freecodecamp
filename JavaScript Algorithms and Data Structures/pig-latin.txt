@@ -1,0 +1,21 @@
+function translatePigLatin(str) {
+  let strToArray = str.split("");
+  let onlyConsonant = str.split(/[aeiou]/);
+  if (strToArray[0] === "a" || strToArray[0] === "e" || strToArray[0] === "i" || strToArray[0] === "o" || strToArray[0] === "u") {
+    strToArray.push("way");
+    return strToArray.join("");
+  } else {
+    for (let i = 0; i < onlyConsonant[0].length; i++) {
+      if (strToArray[0] == onlyConsonant[0][i]) {
+        let poppedCharacter = strToArray.shift();
+        strToArray.push(poppedCharacter)
+        console.log(strToArray);
+      }
+    }
+    strToArray.push("ay");
+    return strToArray.join("");
+  }
+  return str;
+}
+
+translatePigLatin("schwartz");
