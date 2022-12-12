@@ -1,0 +1,18 @@
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  let concatenatedArrays = arr1.concat(arr2);
+  for (let i = 0; i < concatenatedArrays.length; i++) {
+      if (arr1.includes(concatenatedArrays[i]) === false) {
+        newArr.push(concatenatedArrays[i]);
+        console.log(newArr);
+      } else if (arr2.includes(concatenatedArrays[i]) === false) {
+        newArr.push(concatenatedArrays[i]);
+        console.log(newArr); 
+        }
+  }
+
+
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);

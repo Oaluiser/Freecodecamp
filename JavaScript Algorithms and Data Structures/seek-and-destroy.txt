@@ -1,0 +1,10 @@
+function destroyer(arr) {
+  let argumentsArray = Array.from(arguments).slice(1);
+  let newArray = arr;
+  for (let i = 0; i <= argumentsArray.length; i++) {
+    newArray = newArray.filter(value => value !== arguments[i]);
+  }
+  return newArray;
+}
+
+destroyer(["tree", "hamburger", 53], "tree", 53);
