@@ -1,0 +1,15 @@
+function convertHTML(str) {
+  const entities = [["&", "&amp;"], ["<", "&lt;"], [">", "&gt;"], ['"', "&quot;"], ["'", "&apos;"]];
+  let stringToArray = str.split("");
+  for (let i = 0; i < stringToArray.length; i++) {
+    for (let j = 0; j < entities.length; j++) {
+      if (stringToArray[i] === entities[j][0]) {
+        stringToArray[i] = entities[j][1]
+      }
+    }
+  }
+
+  return stringToArray.join("");
+}
+
+console.log(convertHTML("Dolce & Gabbana"));

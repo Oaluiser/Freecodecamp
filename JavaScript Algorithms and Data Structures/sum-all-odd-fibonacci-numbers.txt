@@ -1,0 +1,15 @@
+function sumFibs(num) {
+  let previousNumber = 1;
+  let result = 0;
+
+  for (let currentNumber = 1; currentNumber <= num; currentNumber += previousNumber) {
+    if (currentNumber % 2 !== 0) {
+      result += currentNumber;
+    }
+    previousNumber = currentNumber - previousNumber
+  }
+
+  return result;
+}
+
+console.log(sumFibs(75025));
