@@ -1,0 +1,23 @@
+function smallestCommons(arr) {
+  let sortedArr = arr.sort((a, b) => a - b);
+  let rageOfNumbers = [];
+  for (let i = sortedArr[0]; i <= sortedArr[1]; i++) {
+    rageOfNumbers.push(i);
+  }
+
+  for (let num = 0; num <= 10000000; num += sortedArr[1]) {
+    let divisorCount = 0;
+    for (let multiplier = sortedArr[0]; multiplier <= sortedArr[1]; multiplier++) {
+      for (let divider = sortedArr[0]; divider <= sortedArr[1]; divider++) {
+        if ((num*multiplier)%divider === 0 && num !== 0) {
+          divisorCount += 1;
+          if (divisorCount === rageOfNumbers.length * rageOfNumbers.length) {
+            return num
+          } 
+        } 
+      }
+    }
+  }
+}
+
+console.log(smallestCommons([23, 18]));
