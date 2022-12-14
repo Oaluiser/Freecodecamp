@@ -1,0 +1,22 @@
+function sumPrimes(num) {
+  let divisibleNumbers = [];
+  let primes = []
+  for (let i = 0; i <= num; i++) {
+    for (let j = 1; j <= num; j++) {
+      if (i % j === 0) {
+        divisibleNumbers.push(i);
+      }
+    }
+  }
+
+  for (let i = 0; i <= num; i++) {
+    let filter = divisibleNumbers.filter(x => x === i);
+      if(filter.length == 2) {
+        primes.push(filter[0])
+      }
+  }
+  console.log(primes)
+  return primes.reduce((total, num) => total + num, 0)
+}
+
+console.log(sumPrimes(10));
