@@ -1,0 +1,16 @@
+function palindrome(str) {
+  let lowercaseStr = str.toLowerCase();
+  let onlyCharacter = lowercaseStr.replace(/\W|[_]/g, "")
+  let strToArray = onlyCharacter.split("");
+  let arrayLength = strToArray.length;
+  let countdown = arrayLength-1;
+  for (let i = 0; i < arrayLength; i++) {
+    if (strToArray[i] !== strToArray[countdown]) {
+     return false
+    }
+    countdown = countdown -= 1;
+  }
+  return true;
+}
+
+palindrome("not a palindrome");

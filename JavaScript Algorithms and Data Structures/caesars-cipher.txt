@@ -1,0 +1,20 @@
+function rot13(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
+  let result = [];
+  let strToArr = str.split("");
+
+  for (let i = 0; i < str.length; i++) {
+    if (typeof alphabet[alphabet.indexOf(strToArr[i])] === 'string') {
+      if (alphabet[alphabet.indexOf(strToArr[i])+13] !== undefined) {
+        result.push(alphabet[alphabet.indexOf(strToArr[i])+13])
+      } else {
+        result.push(alphabet[alphabet.indexOf(strToArr[i])+13-alphabet.length])
+      }
+    } else {
+      result.push(strToArr[i])
+    }
+  }
+  return result.join("")
+}
+
+rot13("SERR CVMMN!");

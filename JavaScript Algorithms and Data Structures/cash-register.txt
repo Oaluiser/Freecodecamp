@@ -1,0 +1,58 @@
+function checkCashRegister(price, cash, cid) {
+  let moneyValue = [["PENNY", 0.01], ["NICKEL", 0.05], ["DIME", 0.1], ["QUARTER", 0.25], ["ONE", 1], ["FIVE", 5], ["TEN", 10], ["TWENTY", 20], ["ONE HUNDRED", 100]];
+  let change = [];
+  let changeCount = cash - price;
+  let firstTime = true;
+  let result = {};
+  let sumCid = 0;
+
+  
+  
+  // sum of all cid at the beginning
+  for (let i = 0; i < moneyValue.length; i++) {
+    sumCid = cid[i][1] + sumCid;
+  }
+
+  if (sumCid.toFixed(2) === (cash - price).toFixed(2)) {
+      result.status = "CLOSED";
+      result.change = cid;
+      console.log(cid)
+      return result
+    } 
+
+  // action of change
+  for (let i = moneyValue.length-1; i >= 0; i--) {
+    if (moneyValue[i][1] <= changeCount && cid[i][1] > 0) {
+      changeCount = (changeCount - moneyValue[i][1]).toFixed(2);
+      if (firstTime === true) {
+        change.unshift([moneyValue[i][0], moneyValue[i][1]]);
+      } else {
+        if (change[0][0] === moneyValue[i][0]) {
+          change[0][1] = change[0][1] + moneyValue[i][1];
+        } else {
+          change.unshift([moneyValue[i][0], moneyValue[i][1]]);
+        }
+      }
+
+      cid[i][1] = (cid[i][1] - moneyValue[i][1]).toFixed(2);
+      //console.log(change)
+      //console.log(cid)
+      //console.log(changeCount)
+      firstTime = false
+      i = moneyValue.length;
+    }
+  }
+  for (let i = 0; i < moneyValue.length; i++) {
+    if (sumCid.toFixed(2) < cash - price || changeCount > 0) {
+      result.status = "INSUFFICIENT_FUNDS";
+      result.change = [];
+      return result
+    } 
+  }
+  
+  result.status = "OPEN";
+  result.change = change.reverse();
+  return result
+}
+
+checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])

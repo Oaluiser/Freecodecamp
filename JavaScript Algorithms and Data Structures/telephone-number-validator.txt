@@ -1,0 +1,41 @@
+ function telephoneCheck(str) {
+   let removeVariants = str.replace(/ /g, "");
+
+
+   //check "()" for position
+
+   if ((removeVariants.indexOf("(") === 1 || removeVariants.indexOf("(") === 0) && (removeVariants.indexOf(")") === 5 || removeVariants.indexOf(")") === 4)) {
+     removeVariants = removeVariants.replace(/\(|\)/g, "")
+   } else if (removeVariants.indexOf("(") === -1 && removeVariants.indexOf(")") === -1) {
+   } else {
+     return false
+   }
+    console.log()
+   if (str.match(/-/g) !== null) {
+     if (str.match(/-/g).length > 2)
+     return false
+   }
+   //check for "-" position
+
+   if ((removeVariants.indexOf("-") === 3 || removeVariants.indexOf("-") === 4) || (removeVariants.indexOf("-") === 6 || removeVariants.indexOf("-") === 7)) {
+     removeVariants = removeVariants.replace(/-/g, "")
+   } else if (removeVariants.indexOf("-") === -1) {
+
+   } else {
+     console.log(removeVariants)
+     return false
+   }
+
+
+   //check for length of numbers
+
+   if(removeVariants.length === 10) {
+     return true
+   } else if (removeVariants.length === 11 && removeVariants[0] === "1") {
+     console.log(removeVariants)
+     return true
+   }
+   return false
+}
+
+telephoneCheck("5555555555");
