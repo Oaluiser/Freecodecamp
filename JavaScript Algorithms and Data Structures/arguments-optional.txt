@@ -1,0 +1,21 @@
+function addTogether() {
+  const [arg1, arg2] = arguments;
+  if (typeof arg1 !== "number") {
+    return undefined
+  } else if (arguments.length === 1) {
+    function sumTwoAnd(arg2) {
+      if (typeof(arg2) !== "number") {
+        return undefined;
+      } else {
+        return arg1 + arg2;
+      }
+    }
+    return sumTwoAnd;
+  } else if (typeof(arg2) !== "number") {
+    return undefined;
+  } else {
+    return arg1 + arg2;
+  }
+}
+
+addTogether(2, 3);
