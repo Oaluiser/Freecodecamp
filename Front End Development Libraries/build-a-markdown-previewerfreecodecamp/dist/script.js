@@ -17,7 +17,7 @@ Heres some inline code, \`<div></div>\`.
 
 \`\`\`
 // this is multi-line code:
-let portfolioLink = "https://github.com/Oaluiser/Portfolio"
+const portfolioLink = "https://github.com/Oaluiser/Portfolio"
 if (interest === true) {
   return portfolioLink
 }
