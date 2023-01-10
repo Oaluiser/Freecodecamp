@@ -1,0 +1,14 @@
+mark {
+  display: block;
+  background-color: #212529;
+  color: white;
+}
+
+#root {
+  height: 100vh;
+  
+}
+
+#drum-machine {
+  width: 500px;
+}
