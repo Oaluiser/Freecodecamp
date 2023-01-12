@@ -21,19 +21,21 @@ class Calculator extends React.Component {
     
     const mathRegex = new RegExp('[*+\/-]');
     const mathRegexWithoutMinus = new RegExp('[*+\/]');
+    
     const updateDisplay = (html) => {
-      if (html === ".") {
-        let arr = document.getElementById("display").innerHTML.split("")
-        console.log(arr)
-      }
+      let arr = document.getElementById("display").innerHTML.split(mathRegex)
+      let lastItemOfArr = arr.pop()
+
       if (document.getElementById("display").innerHTML === "0" && html === ".") {
-          document.getElementById("display").innerHTML = "0."
+        document.getElementById("display").innerHTML = "0."
+      } else if (html === "." && lastItemOfArr.includes(".")) {
+
       } else if (document.getElementById("display").innerHTML === "0") {
-          document.getElementById("display").innerHTML = html
+        document.getElementById("display").innerHTML = html
       } else if (document.getElementById("display").innerHTML.slice(-1) === "." && html === ".") {
-        
+
       } else if (mathRegexWithoutMinus.test(document.getElementById("display").innerHTML.slice(-1)) === true && html === "-") {
-          document.getElementById("display").innerHTML += html
+        document.getElementById("display").innerHTML += html
       } else if (mathRegex.test(document.getElementById("display").innerHTML.slice(-1)) === true && mathRegex.test(html) === true) {
         if (document.getElementById("display").innerHTML.slice(-1) === "-") {
           let lastCharacterRemoved = document.getElementById("display").innerHTML.slice(0, -1).slice(0, -1);
@@ -83,7 +85,6 @@ class Calculator extends React.Component {
         return event.target.id
     }
   }
-  
   
   render() {
     return (
