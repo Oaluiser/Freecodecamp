@@ -1,0 +1,22 @@
+#root {
+  height: 100vh;
+}
+
+#calculator {
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+#displaycontainer {
+  border: 3px solid white;
+  border-radius: 8px;
+}
+
+.btn {
+  border: 3px solid white;
+  border-radius: 8px;
+}
+
+#equals {
+  height: 85px;
+}
