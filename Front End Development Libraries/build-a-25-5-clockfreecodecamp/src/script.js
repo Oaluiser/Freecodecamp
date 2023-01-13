@@ -11,7 +11,7 @@ class Clock extends React.Component {
     this.state = {
       breakLength: 5,
       sessionLength: 25,
-      minutes: 25,
+      minutes: 5,
       seconds: 0,
       play: false,
       session: true
@@ -23,18 +23,19 @@ class Clock extends React.Component {
   componentDidMount() {
     
     const timer = setInterval(() => {
+      
       if (this.state.play === true) {
+        if (this.state.minutes === 0 && this.state.seconds === 1) {
+          document.getElementById("beep").play();
+        }
+        
         if (this.state.minutes === 0 && this.state.seconds === 0) {
           if (this.state.session) {
             document.getElementById("timer-label").innerHTML = "Break";
-            this.setState({ minutes: this.state.breakLength});
-            this.setState({ seconds: 0});
-            document.getElementById("beep").play();
+            this.setState({ minutes: this.state.breakLength, seconds: 0, session: false});
           } else {
             document.getElementById("timer-label").innerHTML = "Session";
-            this.setState({ minutes: this.state.sessionLength});
-            this.setState({ seconds: 0});
-            document.getElementById("beep").play();
+            this.setState({ minutes: this.state.sessionLength, seconds: 0, session: true});
           }
         } else if (this.state.seconds === 0) {
           this.setState({ minutes: (this.state.minutes - 1)});
@@ -42,9 +43,9 @@ class Clock extends React.Component {
         } else {
           this.setState({ seconds: (this.state.seconds - 1)});
         };
-        
       }
-      
+      console.log(this.state.minutes)
+      console.log(this.state.seconds)
     } , 1000);
   }
   
@@ -54,6 +55,7 @@ class Clock extends React.Component {
     
     switch(event.target.id) {
       case "break-decrement":
+        this.setState({ seconds: 0, play: false});
         if (this.state.breakLength === 1) {
           
         } else {
@@ -62,6 +64,7 @@ class Clock extends React.Component {
         break;
         
       case "break-increment":
+        this.setState({ seconds: 0, play: false});
         if (this.state.breakLength >= 60) {
           
         } else {
@@ -75,17 +78,18 @@ class Clock extends React.Component {
           
         } else {
           this.setState({ sessionLength: (this.state.sessionLength - 1)});
+          this.setState({ minutes: (this.state.sessionLength - 1)});
         };
-        this.setState({ minutes: (this.state.sessionLength - 1)});
         break;
         
       case "session-increment":
-        if (this.state.sessionLength >= 60) {
+        this.setState({ seconds: 0, play: false});
+        if (this.state.sessionLength === 60) {
           
         } else {
           this.setState({ sessionLength: (this.state.sessionLength + 1)});
+          this.setState({ minutes: (this.state.sessionLength + 1)});
         };
-        this.setState({ minutes: (this.state.sessionLength - 1)});
         break;
         
       case "start_stop":
@@ -97,8 +101,10 @@ class Clock extends React.Component {
         break;
         
       case "reset":
-        this.setState({ sessionLength: 25, breakLength: 5, minutes: 25, seconds: 0, play: false});
-        document.getElementById("beep").pause().load();
+        this.setState({ sessionLength: 25, breakLength: 5, minutes: 25, seconds: 0, play: false, session: true});
+        document.getElementById("timer-label").innerHTML = "Session"
+        document.getElementById("beep").pause();
+        document.getElementById("beep").load();
         break;
         
       default:
