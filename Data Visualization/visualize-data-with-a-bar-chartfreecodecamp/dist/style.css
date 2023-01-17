@@ -1,0 +1,12 @@
+body {
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 97vh;
+}
+
+#container {
+  text-align: center;
+  background-color: white;
+}
