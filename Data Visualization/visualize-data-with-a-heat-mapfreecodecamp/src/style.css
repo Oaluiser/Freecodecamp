@@ -1,0 +1,17 @@
+body {
+  height: 96vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#container {
+  text-align: center;
+  background-color: white;
+  width: 1250px;
+  height: 600px;
+}
+
+.cell:hover {
+  stroke: black;
+}
