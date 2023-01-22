@@ -1,5 +1,4 @@
 body {
-  background-color: lightgrey;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,5 +8,4 @@ body {
 
 #container {
   text-align: center;
-  background-color: white;
 }
